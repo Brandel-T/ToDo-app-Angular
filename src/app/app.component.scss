@@ -1,0 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple');
+ 
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(51, 138, 51, 0.37);
+    
+    h1 {
+        font-family: 'Rancho';
+        color: green
+    }
+}

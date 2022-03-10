@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
 import { TodosComponent } from './components/todos/todos.component';
 
 @NgModule({
@@ -10,7 +12,8 @@ import { TodosComponent } from './components/todos/todos.component';
     TodosComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
