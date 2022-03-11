@@ -1,1 +1,18 @@
-<p>todo-item works!</p>
+<!-- <p>todo-item works!</p> -->
+
+<div *ngFor="let todo of todoItem; let i = index;"
+    class="todo {{ (todo.completed ? 'done' : '') }} ">
+    <span class="id">
+        <i class="fa fa-check-square-o" [ngStyle]="{color: (todo.completed ? 'green' : 'grey')}" style="font-size:20px"></i>
+        <!-- {{ i }} -->
+    </span>
+
+    <span class="content"  (click)="toggleDone( i )">
+        {{todo.content}}
+    </span>
+
+    <button class="delete" (click)="deleteTodo( i )" >Remove</button>
+</div>
+
+
+

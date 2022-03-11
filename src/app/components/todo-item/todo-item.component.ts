@@ -17,5 +17,17 @@ export class TodoItemComponent implements OnInit {
     console.log(this.todoItem);
     
   }
+  
+  toggleDone( id: number ): void { 
+    this.todoItem?.map((todo, todoIndex) => {
+      if (todoIndex == id)  
+        todo.completed = !todo.completed; 
+      return todo;
+    });  
+  }
+
+  deleteTodo( id: number ): void {
+    this.todoItem = this.todoItem?.filter((todo, todoIndex) => todoIndex !== id);
+  }
 
 }

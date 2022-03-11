@@ -25,18 +25,18 @@ export class TodosComponent implements OnInit {
     ];
   }
   
-  toggleDone( id: number ): void { 
-    this.todos?.map((todo, todoIndex) => {
-      if (todoIndex == id)  
-        todo.completed = !todo.completed; 
-      return todo;
-    });  
-  }
+  // toggleDone( id: number ): void { 
+  //   this.todos?.map((todo, todoIndex) => {
+  //     if (todoIndex == id)  
+  //       todo.completed = !todo.completed; 
+  //     return todo;
+  //   });  
+  // }
 
-  deleteTodo( id: number ): void {
-    this.todos = this.todos?.filter((todo, todoIndex) => todoIndex !== id);
-  }
-
+  // deleteTodo( id: number ): void {
+  //   this.todos = this.todos?.filter((todo, todoIndex) => todoIndex !== id);
+  // }
+    
   addTodo(): void {
     this.todos?.push({
       content: this.inputTodo,
