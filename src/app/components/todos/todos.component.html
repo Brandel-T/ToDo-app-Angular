@@ -6,17 +6,16 @@
         <input type="submit" value="Add Todo" class="todo-submit">
     </form>
 
-    <!-- <div *ngFor="let todo of todos; let i = index;"
-        class="todo {{ (todo.completed ? 'done' : '') }} ">
-        <span class="id">
-            <i class="fa fa-check-square-o" [ngStyle]="{color: (todo.completed ? 'green' : 'grey')}" style="font-size:24px"></i>
-            
-        </span>
-        <span class="content"  (click)="toggleDone( i )">
-            {{todo.content}}
-        </span>
-        <button class="delete" (click)="deleteTodo( i )" >Remove</button>
-    </div> -->
-
 </div>
-<app-todo-item [todoItem]="todos" ></app-todo-item>
+<section class="to-display-content" > 
+    <app-todo-item 
+        [todoItems]="todos" 
+        (onModified)="setTodoContent($event)"  
+        (onDelete)="setTodos($event)" >
+    </app-todo-item>
+
+    <span class="message" [ngStyle]="{display: someThingToDo ? 'none' : 'flex'}">
+        {{  someThingToDo }} --
+        You have always notging to do !
+    </span>
+</section>

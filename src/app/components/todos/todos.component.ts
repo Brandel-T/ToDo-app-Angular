@@ -8,41 +8,57 @@ import { Todo } from 'src/app/models/todo';
 })
 export class TodosComponent implements OnInit {
 
-  todos?: Todo[] ;
+  todos?: Todo[] = [] ; // array of Todo
+  someThingToDo?: boolean ;
+  nothingToDo: any; // template reference( to a message ), when the "todos" array is emplty
   inputTodo: string =""; 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.todos = [{
-        content: 'First todo',
-        completed: false
-      },
-      {
-        content: 'Second todo',
-        completed: false
-      }
-    ];
+    this.todos;
+    this.someThingToDo = this.todos?.length !==0; 
   }
-  
-  // toggleDone( id: number ): void { 
-  //   this.todos?.map((todo, todoIndex) => {
-  //     if (todoIndex == id)  
-  //       todo.completed = !todo.completed; 
-  //     return todo;
-  //   });  
-  // }
-
-  // deleteTodo( id: number ): void {
-  //   this.todos = this.todos?.filter((todo, todoIndex) => todoIndex !== id);
-  // }
+   
+  /**
+   * add a new Task to do to the list of tasks
+   */
+  addTodo(): void { 
     
-  addTodo(): void {
     this.todos?.push({
       content: this.inputTodo,
-      completed: false
+      completed: false,
+      notModified: true
     });
-
+    
     this.inputTodo = "";
+    this.someThingToDo = true;
+    console.log( this.todos );
+    
+  }
+
+  /**
+   * 
+   * @param event 
+   * change a todo content
+   */
+  setTodoContent(toChangeTodo: any): void {
+    console.log(toChangeTodo);
+    // console.log( todo.index );
+    
+    console.log('before: ', this.todos );
+    this.todos?.map(
+      (todo, index) => {
+        if ( index === toChangeTodo.index || todo === toChangeTodo.toBeChangeTodo ) 
+          todo.content = toChangeTodo.newContent; 
+        return todo;
+    });
+    console.log('after: ', this.todos );
+    
+  }
+
+  setTodos( event: Array<Todo> ) {
+    this.todos = event;
+    this.someThingToDo = this.todos?.length !== 0; // check if todos arrays is empty (nothing more to do) 
   }
 }
