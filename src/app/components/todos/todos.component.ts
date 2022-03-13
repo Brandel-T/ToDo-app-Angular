@@ -37,6 +37,10 @@ export class TodosComponent implements OnInit {
     
   }
 
+  clear(): void {
+    this.todos = [];
+  }
+
   /**
    * 
    * @param event 
