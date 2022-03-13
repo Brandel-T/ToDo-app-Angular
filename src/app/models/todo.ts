@@ -1,4 +1,5 @@
 export interface Todo {
     content: string;    // save a content of a todo
-    completed: boolean; //are a todo already completed ?
+    completed: boolean; // has the todo(task) already done ?
+    notModified: boolean; // has the todo(task) content been modified ?
 }
