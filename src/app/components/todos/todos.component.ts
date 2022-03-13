@@ -11,7 +11,7 @@ export class TodosComponent implements OnInit {
   todos?: Todo[] = [] ; // array of Todo
   someThingToDo?: boolean ;
   nothingToDo: any; // template reference( to a message ), when the "todos" array is emplty
-  inputTodo: string =""; 
+  inputTodo: string =""; // for two way binding 
 
   constructor() { }
 

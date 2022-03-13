@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Todo } from '../../models/todo';
 
@@ -9,25 +9,44 @@ import { Todo } from '../../models/todo';
 })
 export class TodoItemComponent implements OnInit {
 
-  @Input() todoItem?: Todo[];
-
-  constructor() { }
+  @Input() todoItems?: Todo[]; 
+  @Output() public onModified = new EventEmitter();
+  @Output() public onDelete = new EventEmitter(); 
+  inputTodoItem?: string ;
+ 
+  constructor( ){}
 
   ngOnInit(): void {
-    console.log(this.todoItem);
-    
+    console.log(this.todoItems); 
+       
   }
   
   toggleDone( id: number ): void { 
-    this.todoItem?.map((todo, todoIndex) => {
-      if (todoIndex == id)  
-        todo.completed = !todo.completed; 
-      return todo;
+    this.todoItems?.map((item, todoIndex) => {
+      if (todoIndex == id)  {
+        item.notModified = false;
+        item.completed = !item.completed; 
+      }
+      return item;
     });  
   }
 
   deleteTodo( id: number ): void {
-    this.todoItem = this.todoItem?.filter((todo, todoIndex) => todoIndex !== id);
+    this.todoItems = this.todoItems?.filter((todo, todoIndex) => todoIndex !== id); 
+    // console.log(this.todoItems );
+    this.onDelete.emit( this.todoItems );     
   }
 
+  onClickModify( toChangeItem: Todo, itemIndex : number ): void {
+
+    let altContent = toChangeItem.content;
+    let newContent = window.prompt("Edit a new todo: "); 
+
+    this.onModified.emit({
+      toBeChangeTodo: toChangeItem,
+      altContent: altContent,
+      newContent: newContent,
+      index: itemIndex
+    }); 
+  }
 }
