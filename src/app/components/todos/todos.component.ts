@@ -8,15 +8,15 @@ import { Todo } from 'src/app/models/todo';
 })
 export class TodosComponent implements OnInit {
 
-  todos?: Todo[] = [] ; // array of Todo
+  todos?: Todo[] = [];  // array of Todo
   someThingToDo?: boolean ;
-  nothingToDo: any; // template reference( to a message ), when the "todos" array is emplty
+  nothingToDo: any;      // template reference( to a message ), when the "todos" array is emplty
   inputTodo: string =""; // for two way binding 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.todos;
+    this.todos = [{content: "example", completed: false, notModified: true}]; //
     this.someThingToDo = this.todos?.length !==0; 
   }
    
@@ -38,7 +38,8 @@ export class TodosComponent implements OnInit {
   }
 
   clear(): void {
-    this.todos = [];
+    this.todos = []; 
+    this.someThingToDo = false;
   }
 
   /**
@@ -46,19 +47,13 @@ export class TodosComponent implements OnInit {
    * @param event 
    * change a todo content
    */
-  setTodoContent(toChangeTodo: any): void {
-    console.log(toChangeTodo);
-    // console.log( todo.index );
-    
-    console.log('before: ', this.todos );
+  setTodoContent(toChangeTodo: any): void { 
     this.todos?.map(
       (todo, index) => {
         if ( index === toChangeTodo.index || todo === toChangeTodo.toBeChangeTodo ) 
           todo.content = toChangeTodo.newContent; 
         return todo;
-    });
-    console.log('after: ', this.todos );
-    
+    }); 
   }
 
   setTodos( event: Array<Todo> ) {

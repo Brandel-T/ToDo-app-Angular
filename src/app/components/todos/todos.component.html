@@ -1,21 +1,38 @@
-<div class="todos"> 
 
-    <form (ngSubmit)="addTodo()"  >
-        <input type="text" name="inputTodo" placeholder="Enter todo ..." 
-                class="todo-input" [(ngModel)]="inputTodo" >
-        <input type="submit" value="Add Todo" class="todo-submit">
-    </form>
 
-</div>
-<section class="to-display-content" > 
-    <app-todo-item 
-        [todoItems]="todos" 
-        (onModified)="setTodoContent($event)"  
-        (onDelete)="setTodos($event)" >
-    </app-todo-item>
+<main class="todo-main">
 
-    <span class="message" [ngStyle]="{display: someThingToDo ? 'none' : 'flex'}">
-        {{  someThingToDo }} --
-        You have always notging to do !
-    </span>
-</section>
+    <div class="todos"> 
+
+        <form (ngSubmit)="addTodo()"  >
+            <input type="text" name="inputTodo" placeholder="Enter todo ..." 
+                    class="todo-input" [(ngModel)]="inputTodo" >
+            <!-- <input type="submit" value="Add Todo" class="todo-submit"> -->
+            <button type="submit" class="todo-submit">
+                <i class="fa fa-plus"></i>
+            </button>
+        </form>
+    
+    </div>
+
+    <section class="todo-content" > 
+        
+        <app-todo-item class="todo-item"
+            [todoItems]="todos" 
+            (onModified)="setTodoContent($event)"  
+            (onDelete)="setTodos($event)" >
+        </app-todo-item>
+    
+        <span class="message" [ngStyle]="{display: someThingToDo ? 'none' : 'flex'}"> 
+            You have always notging to do !
+        </span>
+    
+        <button type="button" value="clear" (click)="clear()" 
+            [ngStyle]="{display: someThingToDo ? 'block' : 'none'}"
+            class="clear-button" >
+            <i class="fa fa-trash-o"></i>
+        </button>
+
+    </section>
+
+</main>

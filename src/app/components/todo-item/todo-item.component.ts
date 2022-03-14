@@ -17,8 +17,7 @@ export class TodoItemComponent implements OnInit {
   constructor( ){}
 
   ngOnInit(): void {
-    console.log(this.todoItems); 
-       
+    // console.log(this.todoItems);        
   }
   
   toggleDone( id: number ): void { 
@@ -32,8 +31,7 @@ export class TodoItemComponent implements OnInit {
   }
 
   deleteTodo( id: number ): void {
-    this.todoItems = this.todoItems?.filter((todo, todoIndex) => todoIndex !== id); 
-    // console.log(this.todoItems );
+    this.todoItems = this.todoItems?.filter((todo, todoIndex) => todoIndex !== id);  
     this.onDelete.emit( this.todoItems );     
   }
 
@@ -49,4 +47,5 @@ export class TodoItemComponent implements OnInit {
       index: itemIndex
     }); 
   }
+
 }

@@ -1,31 +1,34 @@
 
 <div *ngFor="let todo of todoItems; let i = index;"
     class="todo {{ (todo.completed ? 'done' : '') }} ">
-    <span class="id">
+    <!-- <div class="todo-item"> -->
+        <span class="id">
 
-        <!-- fontawesome icons -->
-        <i (click)="toggleDone( i )"
-            class="fa fa-square-o" 
-            [ngStyle]="{display: (todo.completed ? 'none' : '')}" 
-            style="font-size:20px"></i>
-        <i (click)="toggleDone( i )"
-            class="fa fa-check-square-o" 
-            [ngStyle]="{display: (todo.completed ? '' : 'none')}" 
-            style="color: green; font-size:20px"></i>
-    </span>
+            <!-- fontawesome icons -->
+            <i (click)="toggleDone( i )"
+                class="fa fa-circle-o" 
+                [ngStyle]="{display: (todo.completed ? 'none' : '')}" 
+                style="font-size:20px"></i>
+            <i (click)="toggleDone( i )"
+                class="fa fa-check-circle-o" 
+                [ngStyle]="{display: (todo.completed ? '' : 'none')}" 
+                style="color: green; font-size:20px"></i>
+        </span>
+    
+        <span class="content" (click)="toggleDone( i )" >
+            <!-- <input name="todo-content" [disabled]="todo.notModified" 
+                [value]="todo.content" [(ngModel)]="todo.content" > -->
+            {{todo.content}}
+        </span>
+    
+    <!-- <span class="modify">          -->
+        <span class="modify">   
+            <i class="fa fa-pencil-square-o" (click)="onClickModify( todo, i )" ></i>
+            <i class="fa fa-minus-square-o delete" (click)="deleteTodo( i )" ></i>
+            <!-- <button class="delete" (click)="deleteTodo( i )" >Remove</button> -->
+        </span>
+    <!-- </div> -->
 
-    <span class="content" (click)="toggleDone( i )" >
-        <!-- <input name="todo-content" [disabled]="todo.notModified" 
-            [value]="todo.content" [(ngModel)]="todo.content" > -->
-        {{todo.content}}
-    </span>
-
-<!-- <span class="modify">          -->
-    <span>   
-        <i class="fa fa-pencil-square-o" (click)="onClickModify( todo, i )" ></i>
-        <i class="fa fa-minus-square-o delete" (click)="deleteTodo( i )" ></i>
-        <!-- <button class="delete" (click)="deleteTodo( i )" >Remove</button> -->
-    </span>
 </div>
 
 <!-- <p>{{inputTodoItem}}</p> -->
